@@ -1,3 +1,29 @@
+
+# Adicione essas linhas no início do seu script, antes das importações
+import sys
+import subprocess
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Lista de pacotes necessários
+required_packages = [
+    'streamlit', 
+    'gtts', 
+    'googletrans==3.1.0a0', 
+    'pydub'
+]
+
+# Instalar pacotes que possam estar faltando
+for package in required_packages:
+    try:
+        __import__(package.split('==')[0])
+    except ImportError:
+        print(f"Instalando {package}...")
+        install(package)
+
+
+# Resto do seu código original continua igual...
 import streamlit as st  # Importa a biblioteca Streamlit para criar interfaces web interativas
 import os  # Importa o módulo os para interagir com o sistema operacional (criar diretórios, etc.)
 from gtts import gTTS  # Importa Google Text-to-Speech para converter texto em fala
