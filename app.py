@@ -23,7 +23,6 @@ for package in required_packages:
         install(package)
 
 
-# Resto do seu código original continua igual...
 import streamlit as st  # Importa a biblioteca Streamlit para criar interfaces web interativas
 import os  # Importa o módulo os para interagir com o sistema operacional (criar diretórios, etc.)
 from gtts import gTTS  # Importa Google Text-to-Speech para converter texto em fala
